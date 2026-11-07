@@ -1,0 +1,52 @@
+{
+  "startedAt": "2026-10-09T11:09:08.330Z",
+  "endedAt": "2026-10-09T12:09:09.109Z",
+  "durationMinutes": 60,
+  "dataDir": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\llmdash-capture1h-ibot6W",
+  "netAuditFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\llmdash-capture1h-ibot6W\\logs\\net-audit.jsonl",
+  "allowlist": {
+    "providerOfficialHosts": [
+      "aip.baidubce.com",
+      "api.anthropic.com",
+      "api.deepseek.com",
+      "api.openai.com",
+      "apiapi.moonshot.cn",
+      "dashscope.aliyuncs.com",
+      "management.azure.com",
+      "open.bigmodel.cn"
+    ],
+    "loopback": [
+      "127.0.0.1",
+      "localhost",
+      "[::1]"
+    ]
+  },
+  "totals": {
+    "requests": 34,
+    "uploads": 0,
+    "requestsByHost": {
+      "127.0.0.1": 34
+    },
+    "uploadsByHost": {}
+  },
+  "security": {
+    "nonAllowlistedRequests": 0,
+    "nonAllowlistedUploads": 0,
+    "uploadViolations": [],
+    "violationsSample": []
+  },
+  "userActions": {
+    "refreshCycles": 17,
+    "manualEntry": true
+  },
+  "localSqlite": {
+    "file": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\llmdash-capture1h-ibot6W\\llm-dashboard.sqlite3",
+    "rows": {
+      "providers": 3,
+      "cookies": 0,
+      "llm_usage_snapshots": 35
+    }
+  },
+  "progressFile": "D:\\projects\\agent_workspace\\llm_token_dashboar+3eee6b83\\docs\\changelog\\artifacts\\net-capture-progress.jsonl",
+  "verdict": "PASS"
+}

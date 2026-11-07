@@ -1,0 +1,101 @@
+{
+  "name": "llm-token-dashboard",
+  "version": "1.1.0",
+  "description": "本地桌面端 LLM 多家额度统一监控面板（Electron + React + Vite + better-sqlite3）",
+  "private": true,
+  "main": "dist/main/index.js",
+  "scripts": {
+    "prepare-native": "node scripts/prepare-native.mjs",
+    "build:renderer": "vite build",
+    "build:main": "node scripts/build-main.mjs",
+    "build": "npm run build:renderer && npm run build:main",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "electron .",
+    "dev": "npm run build && electron .",
+    "audit:no-scheduler": "node scripts/audit-no-scheduler.mjs",
+    "test": "npm run audit:no-scheduler && vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:e2e": "npm run audit:no-scheduler && playwright test",
+    "dist:dir": "npm run build && electron-builder --win --dir",
+    "dist": "npm run build && electron-builder --win"
+  },
+  "build": {
+    "appId": "com.llmtoken.dashboard",
+    "productName": "LLM Token Dashboard",
+    "electronDist": "node_modules/electron/dist",
+    "directories": {
+      "output": "release",
+      "buildResources": "resources"
+    },
+    "files": [
+      "dist/**/*",
+      "!dist/**/*.map"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/better-sqlite3/**"
+    ],
+    "npmRebuild": false,
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "resources",
+        "filter": [
+          "icon.ico",
+          "icon.png"
+        ]
+      },
+      {
+        "from": "vendor",
+        "to": "vendor",
+        "filter": [
+          "better_sqlite3-electron-v130-*.node"
+        ]
+      }
+    ],
+    "publish": null,
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": false,
+      "shortcutName": "LLM 额度监控台",
+      "artifactName": "LLM-Token-Dashboard-Setup-${version}.${ext}"
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.4.11",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.24.2",
+    "fake-indexeddb": "^6.0.0",
+    "jsdom": "^25.0.1",
+    "playwright": "^1.49.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.4.1": true,
+    "electron@33.4.11": true,
+    "esbuild@0.24.2": true,
+    "esbuild@0.21.5": true,
+    "electron-winstaller@5.4.0": true
+  }
+}

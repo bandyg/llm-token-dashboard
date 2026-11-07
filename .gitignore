@@ -1,0 +1,28 @@
+# deps / build artifacts
+node_modules/
+dist/
+release/
+vendor/
+
+# test artifacts
+test-results/
+playwright-report/
+
+# local workspace (ZCode session data)
+.zcode/
+
+# local data / secrets — never commit
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite*
+*.jsonl
+.env
+.env.*
+!.env.example
+
+# misc
+*.log
+.DS_Store
+Thumbs.db
